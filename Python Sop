@@ -1,0 +1,22 @@
+# path test in detail wrangle : 
+# s@path = "/mainfolder/assetFolder/ProjectName_vegetation_big_Tree_eucalyptus_a.abc";
+# s@abc = ""; // Create an empty string to modify with setAttrib in python sop
+
+node = hou.pwd()
+geo = node.geometry()
+path = geo.attribValue("path")[::-1]
+path_final = ""
+for element in range(0,len(path)):
+    if ( (path[element]) != "/" ):
+        
+        path_final += path[element]
+    
+    elif ( (path[element]) == "/" ):
+        
+        break
+
+ 
+
+print path_final[::-1]
+geo.setGlobalAttribValue("abc",path_final[::-1])
+# String return : ProjectName_vegetation_big_Tree_eucalyptus_a.abc
